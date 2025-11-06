@@ -1,0 +1,35 @@
+seed: 7
+output:
+  dir: "results/exp_small_grid_2/"
+  plots: true
+  html_report: false
+
+graph:
+  type: "grid" # grid | er | ba (only grid implemented in this starter)
+  rows: 3
+  cols: 3
+  assets: [2, 5] # zero-based node ids in row-major order
+  candidate_honeypots: "all"
+
+values:
+  asset_value: 10.0
+  normal_value: 3.0
+
+budget:
+  B: 2
+
+detection:
+  model: "neighborhood"
+  radius: 1
+  alpha: 0.7
+  reward_detect: 4.0
+
+actions:
+  enumeration: "enumerate" # enumerate | sample (sample not in starter)
+  max_actions: 5000
+
+solver:
+  method: "mwu"
+  rounds: 30000
+  eta_def: 0.05
+  eta_att: 0.05

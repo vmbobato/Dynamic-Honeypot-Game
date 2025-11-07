@@ -44,10 +44,18 @@ The outcome is a visualization of equilibrium honeypot placement probabilities, 
 `results/` - Holds results for each experiemnt. 
 
 ## Installation
+
+Clone the repository:
 ```
 git clone https://github.com/vmbobato/Dynamic-Honeypot-Game.git
 ```
 
+Navigate into it:
+```
+cd Dynamic-Honeypot-Game/
+```
+
+This project is recommended to be used ina  python virtual env. After creating the env install all requirements:
 ```
 pip install -r requirements.txt
 ```

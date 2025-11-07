@@ -52,6 +52,9 @@ python main.py --config experiments/<experiment>.yaml
 
 ## Results
 **Placement Heatmap** - Bright nodes = higher probability of honeypot placement.
+
 **Attack Heatmap** - Bright nodes = attacker's prefereed targets.
+
 **Payoff Trend** - Rolling average of per-round payoff.
+
 **Cumulative Mean Payoff** - Defender's long run expected payoff.

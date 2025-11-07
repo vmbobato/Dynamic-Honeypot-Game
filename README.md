@@ -28,6 +28,9 @@ The outcome is a visualization of equilibrium honeypot placement probabilities, 
 TODO
 
 ## Installation
+```
+git clone https://github.com/vmbobato/Dynamic-Honeypot-Game.git
+```
 
 ```
 pip install -r requirements.txt
@@ -35,10 +38,10 @@ pip install -r requirements.txt
 ## Running a Simulation
 
 ```
-python cli.py --config experiments/<experiment>.yaml
+python main.py --config experiments/<experiment>.yaml
 ```
 
-## Config Parameters
+## Config Parameters for YAML file
 | Section | Key | Description |
 |----------|--------------|--------------|
 | **Graph** | `rows,cols`, `assets`, `candidate_honeypots`| Grid size, Node IDs of critical assets, Nodes eligible for honeypot |
@@ -46,3 +49,9 @@ python cli.py --config experiments/<experiment>.yaml
 | **Budget** | `B` | Number of honeypots defender can deploy
 | **Detection** | `model`, `radius`, `alpha`, `reward_detect` | Detection model parameters |
 | **Solver** | `method`, `rounds`, `eta_def`, `eta_att` | MWU by default, Number of training rounds, LRs for defender and attacker |
+
+## Results
+**Placement Heatmap** - Bright nodes = higher probability of honeypot placement.
+**Attack Heatmap** - Bright nodes = attacker's prefereed targets.
+**Payoff Trend** - Rolling average of per-round payoff.
+**Cumulative Mean Payoff** - Defender's long run expected payoff.

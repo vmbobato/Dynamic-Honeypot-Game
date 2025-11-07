@@ -18,14 +18,69 @@ The outcome is a visualization of equilibrium honeypot placement probabilities, 
 | **Grid Network** | The network is represented as a 2D grid graph (`rows × cols`). Nodes are computers/systems connected to their adjacent neighbors. |
 | **Assets** | High-value systems that the attacker targets and defender must protect. |
 | **Honeypots** | Decoy systems placed by the defender each round to catch attackers. |
-| **Detection Model** | Determines how honeypots influence nearby nodes using a probability parameter `α` and neighborhood radius `r`. |
+| **Detection Model** | Determines how honeypots influence nearby nodes using a probability parameter `alpha` and neighborhood radius `r`. |
 | **Payoff Matrix** | Defines the defender’s payoff for every defender (honeypot set) and attacker (target node) pair. |
 | **MWU Algorithm** | Both players update strategy weights using Multiplicative Weights Update until the average strategies converge to equilibrium. |
 
 ---
 
 ## Project Structure
-TODO
+dynamic_honeypot_game/
+│
+├── main.py
+│   └─ Main entry point for the simulation.
+│      Loads a YAML configuration, builds the graph, runs the MWU solver,
+│      saves results (CSVs, plots), and prints summary stats.
+│
+├── requirements.txt
+│   └─ Python dependencies needed to run the project.
+│
+├── experiments/
+│   ├── exp_3x3_1.yaml
+│   │   └─ Example config for a 3×3 grid (2 honeypots, neighborhood detection).
+│   └── exp_3x3_2.yaml
+│
+├── src/
+│   ├── graph_model.py
+│   │   └─ Builds the network as a grid graph, labels nodes as
+│   |       assets or normal systems, and defines honeypot candidates.
+│   │
+│   ├── actions.py
+│   │   └─ Enumerates all valid defender actions (honeypot placements)
+│   |       given the candidate list and honeypot budget B.
+│   │
+│   ├── payoff.py
+│   │   └─ Implements the payoff function and detection models.
+│   |       Computes defender payoffs for every (placement, target) pair
+│   |       to form the game matrix.
+│   │
+│   ├── mwu.py
+│   │   └─ Multiplicative Weights Update solver.
+│   |       Uses log-space weights and softmax for numerical stability,
+│   |       returns equilibrium distributions and payoff history.
+│   │
+│   ├── visualize.py
+│   │   └─ Generates visual outputs:
+│   |          - `placement_heatmap.png`: defender honeypot probabilities
+│   |          - `attack_heatmap.png`: attacker target probabilities
+│   |          - `payoff_trend.png`: rolling mean payoff
+│   |          - `payoff_cumulative.png`: cumulative mean payoff
+│   |
+│   └── utils.py  (optional)
+│       └─ Helper functions for logging, normalization, or formatting.
+│
+└── results/
+    ├── exp_3x3_1/
+    │   ├── placement_heatmap.png
+    │   ├── attack_heatmap.png
+    │   ├── payoff_trend.png
+    │   ├── payoff_cumulative.png
+    │   ├── defender_mix.csv
+    │   ├── attacker_mix.csv
+    │   └── pay_hist.csv
+    │
+    └── exp_3x3_2/
+
 
 ## Installation
 ```

@@ -45,3 +45,4 @@ python cli.py --config experiments/<experiment>.yaml
 | **Values** | `asset_value`, `normal_value` | Payoff for each compromised node |
 | **Budget** | `B` | Number of honeypots defender can deploy
 | **Detection** | `model`, `radius`, `alpha`, `reward_detect` | Detection model parameters |
+| **Solver** | `method`, `rounds`, `eta_def`, `eta_att` | MWU by default, Number of training rounds, LRs for defender and attacker |

@@ -26,15 +26,22 @@ The outcome is a visualization of equilibrium honeypot placement probabilities, 
 
 ## Project Structure
 `main.py` - Main entry point for the simulation. Loads a YAML configuration, builds the graph, runs the MWU solver, saves results (CSVs, plots), and prints summary stats.
-`requirements.txt` - Python dependencies needed to run the project.
-`experiments/` - Holds config files for each experiemnt created. 
-`src/graph_model.py` -  Builds the network as a grid graph, labels nodes as assets or normal systems, and defines honeypot candidates.
-`srcactions.py` - Enumerates all valid defender actions (honeypot placements) given the candidate list and honeypot budget B.
-`src/payoff.py` - Implements the payoff function and detection models. Computes defender payoffs for every (placement, target) pair to form the game matrix.
-`src/mwu.py` - Multiplicative Weights Update solver. Uses log-space weights and softmax for numerical stability, returns equilibrium distributions and payoff history.
-`src/visualize.py` - Generates visual outputs.
-`results/` - Holds results for each experiemnt. 
 
+`requirements.txt` - Python dependencies needed to run the project.
+
+`experiments/` - Holds config files for each experiemnt created. 
+
+`src/graph_model.py` -  Builds the network as a grid graph, labels nodes as assets or normal systems, and defines honeypot candidates.
+
+`srcactions.py` - Enumerates all valid defender actions (honeypot placements) given the candidate list and honeypot budget B.
+
+`src/payoff.py` - Implements the payoff function and detection models. Computes defender payoffs for every (placement, target) pair to form the game matrix.
+
+`src/mwu.py` - Multiplicative Weights Update solver. Uses log-space weights and softmax for numerical stability, returns equilibrium distributions and payoff history.
+
+`src/visualize.py` - Generates visual outputs.
+
+`results/` - Holds results for each experiemnt. 
 
 ## Installation
 ```

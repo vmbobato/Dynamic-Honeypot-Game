@@ -33,7 +33,7 @@ The outcome is a visualization of equilibrium honeypot placement probabilities, 
 
 `src/graph_model.py` -  Builds the network as a grid graph, labels nodes as assets or normal systems, and defines honeypot candidates.
 
-`srcactions.py` - Enumerates all valid defender actions (honeypot placements) given the candidate list and honeypot budget B.
+`src/actions.py` - Enumerates all valid defender actions (honeypot placements) given the candidate list and honeypot budget B.
 
 `src/payoff.py` - Implements the payoff function and detection models. Computes defender payoffs for every (placement, target) pair to form the game matrix.
 

@@ -9,7 +9,6 @@ from src.mwu import MWUSolver
 from src.visualize import *
 
 
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--config', required=True)

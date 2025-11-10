@@ -23,15 +23,19 @@ def main():
     gcfg = cfg['graph']
     vcfg = cfg['values']
     Gs = build_graph(rows=gcfg['rows'], cols=gcfg['cols'], assets=gcfg['assets'],
-    candidate_honeypots=gcfg['candidate_honeypots'],
-    asset_value=vcfg['asset_value'], normal_value=vcfg['normal_value'])
+                     candidate_honeypots=gcfg['candidate_honeypots'],
+                     asset_value=vcfg['asset_value'], normal_value=vcfg['normal_value']
+                     )
     B = cfg['budget']['B']
     act_cfg = cfg['actions']
     actions = enumerate_actions(Gs.candidates, B, max_actions=act_cfg.get('max_actions', None))
     print(f"Defender actions: {len(actions)}")
     dcfg = cfg['detection']
     A = build_payoff_matrix(Gs.G, actions, Gs.node_values, dcfg['reward_detect'],
-    model=dcfg['model'], radius=dcfg['radius'], alpha=dcfg['alpha'])
+                            model=dcfg['model'],
+                            radius=dcfg['radius'],
+                            alpha=dcfg['alpha']
+                            )
     scfg = cfg['solver']
     mwu = MWUSolver(A, eta_def=scfg['eta_def'], eta_att=scfg['eta_att'], seed=cfg['seed'])
     res = mwu.run(T=scfg['rounds'])
@@ -47,11 +51,10 @@ def main():
     np.savetxt(Path(out_dir) / 'pay_hist.csv', res['pay_hist'], delimiter=',')
 
     if cfg['output']['plots']:
-        plot_regret_like(res['pay_hist'], str(Path(out_dir) / 'payoff_trend.png'))
         plot_rolling_mean(res['pay_hist'], str(Path(out_dir) / 'payoff_trend.png'), window=300)
         plot_cumulative_mean(res['pay_hist'], str(Path(out_dir) / 'payoff_cumulative.png'))
-        plot_node_heat(Gs.G, node_probs, str(Path(out_dir) / 'placement_heatmap.png'))
-        plot_node_heat(Gs.G, q_bar, str(Path(out_dir) / 'attack_heatmap.png'))
+        plot_node_heat(Gs.G, node_probs, str(Path(out_dir) / 'placement_heatmap.png'), title="Honeypot Placement Heatmap")
+        plot_node_heat(Gs.G, q_bar, str(Path(out_dir) / 'attack_heatmap.png'), title="Node Attack Heatmap")
     print('Saved results to', out_dir)
 
 

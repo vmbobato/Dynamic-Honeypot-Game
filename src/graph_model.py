@@ -29,8 +29,8 @@ def build_graph(rows: int, cols: int, assets: List[int], candidate_honeypots: st
         roles[a] = 'asset'
     if candidate_honeypots == 'all':
         candidates = list(G.nodes())
-        candidates = [n for n in candidates if n not in assets]
     else:
         candidates = list(candidate_honeypots)
+    candidates = [n for n in candidates if n not in assets]
     values = {i: (asset_value if roles[i] == 'asset' else normal_value) for i in G.nodes()}
     return GraphState(G=G, node_roles=roles, node_values=values, candidates=candidates, assets=assets)

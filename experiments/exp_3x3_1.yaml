@@ -1,14 +1,13 @@
 seed: 7
 output:
-  dir: "results/exp_small_grid/"
+  dir: "results/exp_3x3_1/"
   plots: true
-  html_report: false
 
 graph:
-  type: "grid" # grid | er | ba (only grid implemented in this starter)
+  type: "grid"
   rows: 3
   cols: 3
-  assets: [5, 8] # zero-based node ids in row-major order
+  assets: [5, 8]
   candidate_honeypots: "all"
 
 values:
@@ -25,7 +24,7 @@ detection:
   reward_detect: 4.0
 
 actions:
-  enumeration: "enumerate" # enumerate | sample (sample not in starter)
+  enumeration: "enumerate"
   max_actions: 5000
 
 solver:
